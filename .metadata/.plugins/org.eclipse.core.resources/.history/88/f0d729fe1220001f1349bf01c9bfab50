@@ -1,0 +1,25 @@
+package in.ashokit.config;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import in.ashokit.entity.UserCredential;
+import in.ashokit.repo.UserCredentailRepo;
+
+public class CustomeUserDetailsService implements UserDetailsService{
+	
+	@Autowired
+	private UserCredentailRepo crepo;
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		Optional<UserCredential> credentail = crepo.findByName(username);
+		
+		return credential.map(CustomeUserDetails::new).orElseThrow() -> new UsernameNotFoundException(username + " not found Invalid");
+	}
+
+}

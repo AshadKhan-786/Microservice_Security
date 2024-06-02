@@ -1,0 +1,23 @@
+package in.ashokit.filter;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+in.ashokit.filter.AuthenticationFilter.Config
+import in.ashokit.util.JwtUtil;
+
+@Component
+public class AuthenticationFilter {
+
+	@Autowired
+	private RouteValidator validator;
+
+	@Autowired
+	private JwtUtil jwtUtil;
+
+	public AuthenticationFilter() {
+		super(Config.class);
+	}
+	
+	
+}

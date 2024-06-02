@@ -1,0 +1,4 @@
+spring.application.name=Welcome_API
+server.port= 2222
+
+spring.config.import= optional:configserver:http://localhost:111

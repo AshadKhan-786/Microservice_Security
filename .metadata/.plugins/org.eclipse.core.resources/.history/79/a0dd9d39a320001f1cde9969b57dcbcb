@@ -1,0 +1,46 @@
+package in.ashokit.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import in.ashokit.entity.UserCredential;
+import in.ashokit.repo.UserCredentailRepo;
+
+@Service
+public class AuthService {
+	
+	@Autowired
+	private JwtService jwtService;
+	
+	@Autowired
+	private PasswordEncoder pwdEncoder;
+	
+	@Autowired
+	private UserCredentailRepo crepo;
+
+	public String saveUser(UserCredential user) {
+		
+		Optional<UserCredential> byName = crepo.findByName(user.getName());
+		UserCredential userCredential = byName.get();
+		
+		if(userCredential != null) {
+			return userCredential.getName() + " already exists in system";
+		}else {
+			user.setPassword(pwdEncoder.encode(user.getPassword()));
+			crepo.save(user);
+			
+			return "User added to the system";
+		}
+	}
+	
+	public String generateToken(String username) {
+        return jwtService.generateToken(username);
+    }
+
+    public void validateToken(String token) {
+        jwtService.validateToken(token);
+    }
+}

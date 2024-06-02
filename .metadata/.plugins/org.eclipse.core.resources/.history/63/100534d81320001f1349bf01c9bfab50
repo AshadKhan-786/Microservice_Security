@@ -1,0 +1,6 @@
+package in.ashokit.config;
+
+@Service
+public class AuthConfig {
+
+}

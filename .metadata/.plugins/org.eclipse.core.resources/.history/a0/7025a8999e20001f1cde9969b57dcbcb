@@ -1,0 +1,33 @@
+# Conversion to YAML from Properties formar report
+# Warnings:
+# - Multiple values [id: welcome-api, Path=/welcome, AuthenticationFilter, id: greet-api, Path=/greet, id: authentication-api, Path=/auth/**] assigned to '-'. Values are merged into a yaml sequence node.
+# - Multiple values [lb://WELCOME, lb://GREET, lb://AUTH-SERVICE] assigned to 'uri'. Values are merged into a yaml sequence node.
+server: ''
+port: 5555
+spring: ''
+application: ''
+name: API-Gateway
+cloud: ''
+gateway: ''
+routes: ''
+'-':
+- 'id: welcome-api'
+- Path=/welcome
+- AuthenticationFilter
+- 'id: greet-api'
+- Path=/greet
+- 'id: authentication-api'
+- Path=/auth/**
+uri:
+- lb://WELCOME
+- lb://GREET
+- lb://AUTH-SERVICE
+predicates: ''
+filters: ''
+metadata: ''
+cors: ''
+allowedOrigins: '''*'''
+allowedHeaders: '''*'''
+maxAge: 30
+main: ''
+web-application-type: reactive

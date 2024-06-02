@@ -1,0 +1,7 @@
+package in.ashokit.config;
+
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+public class CustomeUserDetailsService implements UserDetailsService{
+
+}

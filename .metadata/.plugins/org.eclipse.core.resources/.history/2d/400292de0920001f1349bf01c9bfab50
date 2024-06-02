@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: Welcome_API
+  config:
+    import: optional:configserver:http://localhost:1111
+server:
+  port: 2222

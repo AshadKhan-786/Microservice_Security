@@ -1,0 +1,24 @@
+package in.ashokit.filter;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.stereotype.Component;
+
+import in.ashokit.util.JwtUtil;
+
+@Component
+public class AuthenticationFilter extends AbstractGatewayFilterFactory<AuthenticationFilter.Config>{
+
+	@Autowired
+	private RouteValidator validator;
+
+	@Autowired
+	private JwtUtil jwtUtil;
+
+	
+	
+	
+	public static class Config {
+	}
+	
+}
